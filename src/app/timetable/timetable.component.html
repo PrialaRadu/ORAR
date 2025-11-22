@@ -1,0 +1,190 @@
+<div class="page-container">
+
+  <div class="sidebar">
+
+    <!-- PROFIL USER -->
+    <div class="user-profile">
+      <img src="profile.png" class="profile-avatar" alt="User" />
+
+      <div class="user-info">
+        <div class="user-name">Priala Radu</div>
+        <div class="user-email">radu.priala@stud.ubbcluj.ro</div>
+      </div>
+    </div>
+
+    <div class="sidebar-separator"></div>
+
+    <!-- FUNCȚIONALITĂȚI -->
+    <div class="sidebar-menu">
+
+      <div class="menu-title">Funcționalități</div>
+
+      <button class="menu-item">
+        <span>⦿ Alege materie opțională</span>
+      </button>
+
+      <button class="menu-item">
+        <span>⦿ Schimbă ora cu alta grupa</span>
+      </button>
+
+      <button class="menu-item">
+        <span>⦿ Setări cont</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- HEADER COMPLET -->
+  <div class="header-section">
+
+    <div class="left-header">
+      <img src="logo.png" width="80" height="80" class="faculty-logo" alt="Logo" />
+
+      <!-- BUTON "Orarul Meu" -->
+      <div class="my-schedule-block">
+        <div class="my-schedule-label">Orarul Meu</div>
+
+        <button class="my-schedule-btn">
+          <span class="my-schedule-icon">📘</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="right-header">
+
+      <!-- 1) SPECIALIZARE -->
+      <div class="info-block">
+        <div class="label">Specializare</div>
+
+        <select class="specialization-select" (change)="selectSpecialization($event)">
+          <option *ngFor="let s of specializations" [value]="s" [selected]="s === selectedSpecialization">
+            {{ s }}
+          </option>
+        </select>
+      </div>
+
+      <!-- 2) GRUPA -->
+      <div class="info-block">
+        <div class="label">Grupa</div>
+
+        <select class="group-select" (change)="selectGroup($event)">
+          <option *ngFor="let g of groups" [value]="g" [selected]="g === selectedGroup">
+            {{ g }}
+          </option>
+        </select>
+      </div>
+
+      <!-- 3) SĂPTĂMÂNA -->
+      <div class="info-block">
+        <div class="label">Săptămâna</div>
+
+        <div class="switch-container">
+          <button
+            class="switch-btn"
+            [class.active]="selectedWeek === 1"
+            (click)="selectWeek(1)">
+            P
+          </button>
+
+          <button
+            class="switch-btn"
+            [class.active]="selectedWeek === 2"
+            (click)="selectWeek(2)">
+            I
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ORAR -->
+  <div class="timetable-wrapper-2">
+
+    <div class="hours-column">
+      <div class="hour"></div>
+      <div class="hour">8 AM</div>
+      <div class="hour">9 AM</div>
+      <div class="hour">10 AM</div>
+      <div class="hour">11 AM</div>
+      <div class="hour">12 PM</div>
+      <div class="hour">1 PM</div>
+      <div class="hour">2 PM</div>
+      <div class="hour">3 PM</div>
+      <div class="hour">4 PM</div>
+      <div class="hour">5 PM</div>
+      <div class="hour">6 PM</div>
+      <div class="hour">7 PM</div>
+      <div class="hour">8 PM</div>
+    </div>
+
+    <div class="grid-area">
+      <div
+        class="time-line"
+        *ngIf="currentDayIndex > 0"
+        [style.gridColumn]="currentDayIndex + ' / ' + (currentDayIndex + 1)"
+        [style.top.px]="currentLinePosition">
+      </div>
+      <div class="day">Luni</div>
+      <div class="day">Marti</div>
+      <div class="day">Miercuri</div>
+      <div class="day">Joi</div>
+      <div class="day">Vineri</div>
+
+      <!-- CELULELE -->
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+      <!-- EVENTURI EXEMPLE -->
+      <div class="event lab" style="grid-column: 1; grid-row: 9 / span 2;">
+        <div class="event-title">Astronomie</div>
+        <div class="event-professor">prof. Pop</div>
+        <div class="event-room">Sala 302</div>
+        <div class="event-attendance">
+          <button class="att-btn minus">−</button>
+          <div class="att-count">5/14</div>
+          <button class="att-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="event curs" style="grid-column: 2; grid-row: 4 / span 2;">
+        <div class="event-title">Rețele</div>
+        <div class="event-professor">prof. Ionescu</div>
+        <div class="event-room">Amfiteatru</div>
+        <div class="event-attendance">
+          <button class="att-btn minus">−</button>
+          <div class="att-count">5/14</div>
+          <button class="att-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="event sem" style="grid-column: 3; grid-row: 6 / span 2;">
+        <div class="event-title">Ecuații</div>
+        <div class="event-professor">asist. Maria</div>
+        <div class="event-room">410</div>
+        <div class="event-attendance">
+          <button class="att-btn minus">−</button>
+          <div class="att-count">5/14</div>
+          <button class="att-btn plus">+</button>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
