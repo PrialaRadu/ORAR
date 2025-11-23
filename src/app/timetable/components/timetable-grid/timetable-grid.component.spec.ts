@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimetableGrid } from './timetable-grid.component';
+import { TimetableGridComponent } from './timetable-grid.component';
 
 describe('TimetableGrid', () => {
-  let component: TimetableGrid;
-  let fixture: ComponentFixture<TimetableGrid>;
+  let component: TimetableGridComponent;
+  let fixture: ComponentFixture<TimetableGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TimetableGrid]
+      imports: [TimetableGridComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(TimetableGrid);
+    fixture = TestBed.createComponent(TimetableGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

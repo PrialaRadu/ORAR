@@ -248,3 +248,21 @@
   border-radius: 4px;
   pointer-events: none;
 }
+
+.event-room {
+  cursor: pointer;
+}
+
+.event-professor {
+  cursor: pointer;
+}
+
+.prof-link {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+.prof-link:hover {
+  opacity: 0.8;
+}

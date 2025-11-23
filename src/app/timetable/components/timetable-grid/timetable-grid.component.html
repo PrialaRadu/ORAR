@@ -46,10 +46,19 @@
     <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
 
     <!-- EVENTURI EXEMPLE -->
+    <!-- EVENTURI EXEMPLE -->
     <div class="event lab" style="grid-column: 1; grid-row: 9 / span 2;">
-      <div class="event-title">Astronomie</div>
-      <div class="event-professor">prof. Pop</div>
-      <div class="event-room">Sala 302</div>
+      <div class="event-title">
+        Astronomie
+      </div>
+      <div class="event-professor"
+           (click)="openRoomLocation('https://www.google.com/search?q=UBB+Blaga+Cristina')">
+        prof. Pop
+      </div>
+      <div class="event-room"
+           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj')">
+        Sala 302
+      </div>
 
       <div class="event-attendance">
         <button class="att-btn minus">−</button>
@@ -81,6 +90,7 @@
         <button class="att-btn plus">+</button>
       </div>
     </div>
+
 
   </div>
 </div>
