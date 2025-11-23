@@ -59,6 +59,8 @@
 }
 
 .event {
+  z-index: 5;
+  width: 100%;
   font-weight: 700;
   border-radius: 12px;
   padding: 10px 12px;
@@ -69,6 +71,9 @@
   border: 1px solid #818181;
   text-shadow: 0px 1px 5px rgba(0,0,0,0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  align-self: start;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .event:hover {
@@ -76,10 +81,11 @@
   box-shadow: 0 12px 24px rgba(0,0,0,0.28);
 }
 
-/* Culori evenimente */
+
 .event.lab {
   background-color: #E0C600;
   color: white;
+  z-index: 10;
 }
 
 .event.curs {

@@ -1,0 +1,6 @@
+id,title,type,professor,room,dayIndex,startRow,span
+1,Astronomie,lab,prof. Pop,Sala 302,1,9,2
+2,Rețele,curs,prof. Ionescu,Amfiteatru,2,4,2
+3,Ecuații,sem,asist. Maria,410,3,6,2
+4,Algoritmi,curs,prof. Dan,A2,3,6,2
+5,Algoritmi,curs,prof. Dan,A2,5,8,2

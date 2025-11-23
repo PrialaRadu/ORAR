@@ -45,44 +45,27 @@
     <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
 
-    <!-- EVENTURI EXEMPLE -->
-    <!-- EVENTURI EXEMPLE -->
-    <div class="event lab" style="grid-column: 1; grid-row: 9 / span 2;">
+    <div *ngFor="let event of displayEvents"
+         class="event"
+         [ngClass]="event.type"
+         [style.gridColumn]="event.dayIndex"
+         [style.gridRow]="event.startRow + ' / span ' + event.span"
+         [style.width.%]="event.width"
+         [style.marginLeft.%]="event.marginLeft">
+
       <div class="event-title">
-        Astronomie
+        {{ event.title }}
       </div>
+
       <div class="event-professor"
-           (click)="openRoomLocation('https://www.google.com/search?q=UBB+Blaga+Cristina')">
-        prof. Pop
+           (click)="openRoomLocation('https://www.google.com/search?q=UBB+' + event.professor)">
+        {{ event.professor }}
       </div>
+
       <div class="event-room"
-           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj')">
-        Sala 302
+           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj' + event.professor)">
+        {{ event.room }}
       </div>
-
-      <div class="event-attendance">
-        <button class="att-btn minus">−</button>
-        <div class="att-count">5/14</div>
-        <button class="att-btn plus">+</button>
-      </div>
-    </div>
-
-    <div class="event curs" style="grid-column: 2; grid-row: 4 / span 2;">
-      <div class="event-title">Rețele</div>
-      <div class="event-professor">prof. Ionescu</div>
-      <div class="event-room">Amfiteatru</div>
-
-      <div class="event-attendance">
-        <button class="att-btn minus">−</button>
-        <div class="att-count">5/14</div>
-        <button class="att-btn plus">+</button>
-      </div>
-    </div>
-
-    <div class="event sem" style="grid-column: 3; grid-row: 6 / span 2;">
-      <div class="event-title">Ecuații</div>
-      <div class="event-professor">asist. Maria</div>
-      <div class="event-room">410</div>
 
       <div class="event-attendance">
         <button class="att-btn minus">−</button>

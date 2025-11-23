@@ -1,0 +1,44 @@
+   <!-- EVENTURI EXEMPLE -->
+<!--    <div class="event lab" style="grid-column: 1; grid-row: 9 / span 2;">-->
+<!--      <div class="event-title">-->
+<!--        Astronomie-->
+<!--      </div>-->
+<!--      <div class="event-professor"-->
+<!--           (click)="openRoomLocation('https://www.google.com/search?q=UBB+Blaga+Cristina')">-->
+<!--        prof. Pop-->
+<!--      </div>-->
+<!--      <div class="event-room"-->
+<!--           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj')">-->
+<!--        Sala 302-->
+<!--      </div>-->
+
+<!--      <div class="event-attendance">-->
+<!--        <button class="att-btn minus">−</button>-->
+<!--        <div class="att-count">5/14</div>-->
+<!--        <button class="att-btn plus">+</button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="event curs" style="grid-column: 2; grid-row: 4 / span 2;">-->
+<!--      <div class="event-title">Rețele</div>-->
+<!--      <div class="event-professor">prof. Ionescu</div>-->
+<!--      <div class="event-room">Amfiteatru</div>-->
+
+<!--      <div class="event-attendance">-->
+<!--        <button class="att-btn minus">−</button>-->
+<!--        <div class="att-count">5/14</div>-->
+<!--        <button class="att-btn plus">+</button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="event sem" style="grid-column: 3; grid-row: 6 / span 2;">-->
+<!--      <div class="event-title">Ecuații</div>-->
+<!--      <div class="event-professor">asist. Maria</div>-->
+<!--      <div class="event-room">410</div>-->
+
+<!--      <div class="event-attendance">-->
+<!--        <button class="att-btn minus">−</button>-->
+<!--        <div class="att-count">5/14</div>-->
+<!--        <button class="att-btn plus">+</button>-->
+<!--      </div>-->
+<!--    </div>-->
