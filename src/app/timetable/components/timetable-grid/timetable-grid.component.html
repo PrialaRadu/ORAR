@@ -58,7 +58,7 @@
       </div>
 
       <div class="event-professor"
-           (click)="openRoomLocation('https://www.google.com/search?q=UBB+' + event.professor)">
+           (click)="openRoomLocation('https://www.google.com/search?q=UBB+' + event.professor + '&btnI=1')">
         {{ event.professor }}
       </div>
 
@@ -67,7 +67,7 @@
         {{ event.room }}
       </div>
 
-      <div class="event-attendance">
+      <div class="event-attendance-box">
         <button class="att-btn minus">−</button>
         <div class="att-count">5/14</div>
         <button class="att-btn plus">+</button>

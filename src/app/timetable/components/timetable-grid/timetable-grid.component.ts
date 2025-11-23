@@ -40,7 +40,7 @@ export class TimetableGridComponent implements OnInit {
   }
 
   loadEventsFromCsv() {
-    this.http.get('assets/orar.csv', { responseType: 'text' })
+    this.http.get('assets/331-1/par.csv', { responseType: 'text' })
       .subscribe({
         next: (data) => {
           // parsare text si populare rawevents
