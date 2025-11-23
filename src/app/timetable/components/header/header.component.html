@@ -1,0 +1,48 @@
+<div class="header-section">
+
+  <div class="left-header">
+    <img src="logo.png" width="80" height="80" class="faculty-logo" />
+
+    <div class="my-schedule-block">
+      <div class="my-schedule-label">Orarul Meu</div>
+      <button class="my-schedule-btn">📘</button>
+    </div>
+  </div>
+
+  <div class="right-header">
+
+    <div class="info-block">
+      <div class="label">Specializare</div>
+      <select (change)="selectSpecialization($event)">
+        <option *ngFor="let s of specializations" [value]="s" [selected]="s === selectedSpecialization">
+          {{ s }}
+        </option>
+      </select>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Grupa</div>
+      <select (change)="selectGroup($event)">
+        <option *ngFor="let g of groups" [value]="g" [selected]="g === selectedGroup">
+          {{ g }}
+        </option>
+      </select>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Săptămâna</div>
+
+      <div class="switch-container">
+        <button class="switch-btn" [class.active]="selectedWeek === 1" (click)="selectWeek(1)">
+          P
+        </button>
+        <button class="switch-btn" [class.active]="selectedWeek === 2" (click)="selectWeek(2)">
+          I
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

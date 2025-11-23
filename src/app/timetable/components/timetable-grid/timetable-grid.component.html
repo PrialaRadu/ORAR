@@ -1,0 +1,86 @@
+<div class="timetable-wrapper-2">
+
+  <div class="hours-column">
+    <div class="hour"></div>
+    <div class="hour">8 AM</div>
+    <div class="hour">9 AM</div>
+    <div class="hour">10 AM</div>
+    <div class="hour">11 AM</div>
+    <div class="hour">12 PM</div>
+    <div class="hour">1 PM</div>
+    <div class="hour">2 PM</div>
+    <div class="hour">3 PM</div>
+    <div class="hour">4 PM</div>
+    <div class="hour">5 PM</div>
+    <div class="hour">6 PM</div>
+    <div class="hour">7 PM</div>
+    <div class="hour">8 PM</div>
+  </div>
+
+  <div class="grid-area">
+
+    <div class="time-line"
+         *ngIf="currentDayIndex > 0"
+         [style.gridColumn]="currentDayIndex + ' / ' + (currentDayIndex + 1)"
+         [style.top.px]="currentLinePosition">
+    </div>
+
+    <div class="day">Luni</div>
+    <div class="day">Marti</div>
+    <div class="day">Miercuri</div>
+    <div class="day">Joi</div>
+    <div class="day">Vineri</div>
+
+    <!-- CELULELE -->
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+    <!-- EVENTURI EXEMPLE -->
+    <div class="event lab" style="grid-column: 1; grid-row: 9 / span 2;">
+      <div class="event-title">Astronomie</div>
+      <div class="event-professor">prof. Pop</div>
+      <div class="event-room">Sala 302</div>
+
+      <div class="event-attendance">
+        <button class="att-btn minus">−</button>
+        <div class="att-count">5/14</div>
+        <button class="att-btn plus">+</button>
+      </div>
+    </div>
+
+    <div class="event curs" style="grid-column: 2; grid-row: 4 / span 2;">
+      <div class="event-title">Rețele</div>
+      <div class="event-professor">prof. Ionescu</div>
+      <div class="event-room">Amfiteatru</div>
+
+      <div class="event-attendance">
+        <button class="att-btn minus">−</button>
+        <div class="att-count">5/14</div>
+        <button class="att-btn plus">+</button>
+      </div>
+    </div>
+
+    <div class="event sem" style="grid-column: 3; grid-row: 6 / span 2;">
+      <div class="event-title">Ecuații</div>
+      <div class="event-professor">asist. Maria</div>
+      <div class="event-room">410</div>
+
+      <div class="event-attendance">
+        <button class="att-btn minus">−</button>
+        <div class="att-count">5/14</div>
+        <button class="att-btn plus">+</button>
+      </div>
+    </div>
+
+  </div>
+</div>
