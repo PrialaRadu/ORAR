@@ -53,6 +53,10 @@
          [style.width.%]="event.width"
          [style.marginLeft.%]="event.marginLeft">
 
+<!--      <button class="event-notes-btn">-->
+<!--        ✎-->
+<!--      </button>-->
+
       <div class="event-title">
         {{ event.title }}
       </div>
@@ -63,7 +67,7 @@
       </div>
 
       <div class="event-room"
-           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj' + event.professor)">
+           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj ' + event.room)">
         {{ event.room }}
       </div>
 

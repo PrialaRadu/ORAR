@@ -8,7 +8,6 @@
 .timetable-wrapper-2 {
   display: flex;
   gap: 15px;
-  margin-left: 0px;
 }
 
 .hours-column {
@@ -273,3 +272,44 @@
   color: #fff;
   text-shadow: 0px 1px 4px rgba(0,0,0,0.45);
 }
+
+/*.event-notes-btn {*/
+/*  position: absolute;*/
+/*  top: 6px;*/
+/*  right: 6px;*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+
+/*  !* Stil vizual - Glassmorphism *!*/
+/*  background: rgba(255, 255, 255, 0.25);*/
+/*  backdrop-filter: blur(2px);*/
+/*  border: 1px solid rgba(255, 255, 255, 0.4);*/
+/*  border-radius: 6px;*/
+
+/*  !* Centrare iconita/text *!*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+
+/*  !* Font si culoare *!*/
+/*  color: white;*/
+/*  font-size: 14px;*/
+/*  font-weight: bold;*/
+/*  cursor: pointer;*/
+/*  z-index: 20; !* Să fie peste event *!*/
+/*  transition: all 0.2s ease;*/
+
+/*  !* Resetare stiluri default button *!*/
+/*  padding: 0;*/
+/*  outline: none;*/
+/*}*/
+
+/*.event-notes-btn:hover {*/
+/*  background: rgba(255, 255, 255, 0.55);*/
+/*  transform: scale(1.1);*/
+/*  box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+/*}*/
+
+/*.event-notes-btn:active {*/
+/*  transform: scale(0.95);*/
+/*}*/

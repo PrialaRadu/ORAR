@@ -4,13 +4,44 @@
     <img src="logo.png" width="80" height="80" class="faculty-logo" />
 
     <div class="my-schedule-block">
-      <div class="my-schedule-label">Orarul Meu</div>
+      <div class="label">Orarul Meu</div>
       <button class="my-schedule-btn">📘</button>
     </div>
+
+    <div class="filter-block">
+      <div class="label">Filtre</div>
+      <div class="filter-buttons">
+
+        <button
+          class="filter-btn curs"
+          [class.active]="filters.curs"
+          (click)="toggleFilter('curs')"
+          title="Arată/Ascunde Cursuri">
+          C
+        </button>
+
+        <button
+          class="filter-btn sem"
+          [class.active]="filters.sem"
+          (click)="toggleFilter('sem')"
+          title="Arată/Ascunde Seminarii">
+          S
+        </button>
+
+        <button
+          class="filter-btn lab"
+          [class.active]="filters.lab"
+          (click)="toggleFilter('lab')"
+          title="Arată/Ascunde Laboratoare">
+          L
+        </button>
+
+      </div>
+    </div>
+
   </div>
 
   <div class="right-header">
-
     <div class="info-block">
       <div class="label">Specializare</div>
       <select (change)="selectSpecialization($event)">
@@ -31,18 +62,11 @@
 
     <div class="info-block">
       <div class="label">Săptămâna</div>
-
       <div class="switch-container">
-        <button class="switch-btn" [class.active]="selectedWeek === 1" (click)="selectWeek(1)">
-          P
-        </button>
-        <button class="switch-btn" [class.active]="selectedWeek === 2" (click)="selectWeek(2)">
-          I
-        </button>
+        <button class="switch-btn" [class.active]="selectedWeek === 1" (click)="selectWeek(1)">P</button>
+        <button class="switch-btn" [class.active]="selectedWeek === 2" (click)="selectWeek(2)">I</button>
       </div>
-
     </div>
-
   </div>
 
 </div>
