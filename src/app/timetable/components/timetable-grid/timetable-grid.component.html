@@ -54,10 +54,6 @@
          [style.marginLeft.%]="event.marginLeft"
          (click)="onEventClick(event)">
 
-      <!--      <button class="event-notes-btn">-->
-      <!--        ✎-->
-      <!--      </button>-->
-
       <div class="event-title"
            (click)="openLink('https://www.google.com/search?q=UBB fisa disciplinei pdf +' + event.title + '&btnI=1')">
         {{ event.title }}
@@ -73,22 +69,13 @@
         {{ event.room }}
       </div>
 
-      <div class="event-attendance-box"
-           [class.expanded]="event.isAttendanceOpen"
-           (click)="toggleAttendance(event, $event)">
-
-        <div class="att-icon-trigger" *ngIf="!event.isAttendanceOpen">
-          <span class="mini-count" *ngIf="!event.isAttendanceOpen">5</span> </div>
-
-        <div class="att-controls" *ngIf="event.isAttendanceOpen">
-          <button class="att-btn minus" (click)="handleAttendanceClick($event)">−</button>
-
-          <div class="att-count">5/14</div>
-
-          <button class="att-btn plus" (click)="handleAttendanceClick($event)">+</button>
-        </div>
-
-      </div>
+      <app-event-attendance
+        [present]="event.attendanceCount || 0"
+        [total]="14"
+        [isOpen]="event.isAttendanceOpen || false"
+        (attendanceChange)="updateAttendance(event, $event)"
+        (toggle)="toggleAttendance(event)">
+      </app-event-attendance>
     </div>
 
 

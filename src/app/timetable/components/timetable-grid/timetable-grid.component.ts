@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, inject, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { EventAttendanceComponent } from './event-attendance/event-attendance.component';
 
 export interface CalendarEvent {
   id: number;
@@ -16,12 +17,13 @@ export interface CalendarEvent {
   isAttendanceOpen?: boolean;
   notes?: string;
   weeklyNotes: { [week: number]: string };
+  attendanceCount?: number;
 }
 
 @Component({
   selector: 'app-timetable-grid',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EventAttendanceComponent],
   templateUrl: './timetable-grid.component.html',
   styleUrls: ['./timetable-grid.component.css']
 })
@@ -58,6 +60,7 @@ export class TimetableGridComponent implements OnInit {
   }
 
   // transformare CSV -> json
+  // asta este facuta doar pt ca nu am legat inca cu backend, cand legam cu backend nu o vom mai folosi
   private parseCsvData(csvText: string): CalendarEvent[] {
     const lines = csvText.split('\n');
     const events: CalendarEvent[] = [];
@@ -66,9 +69,6 @@ export class TimetableGridComponent implements OnInit {
       const line = lines[i].trim();
       if (line) {
         const cols = line.split(',');
-
-        // mapare coloane la obiect
-        // ordine respectata: id,title,type,professor,room,dayIndex,startRow,span
         const newEvent: CalendarEvent = {
           id: parseInt(cols[0]),
           title: cols[1],
@@ -120,17 +120,20 @@ export class TimetableGridComponent implements OnInit {
     window.open(url, "_blank");
   }
 
-  toggleAttendance(event: CalendarEvent, e: Event) {
-    e.stopPropagation(); // Previne click-ul sa se duca la parinte (daca ai click pe tot eventul)
+  toggleAttendance(event: CalendarEvent) {
     event.isAttendanceOpen = !event.isAttendanceOpen;
   }
 
-  handleAttendanceClick(e: Event) {
-    // Aceasta functie e doar pentru butoanele + si -
-    // Ca sa nu se inchida meniul cand apesi pe plus
-    e.stopPropagation();
-  }
   onEventClick(event: CalendarEvent) {
     this.eventClicked.emit(event);
   }
+
+
+  updateAttendance(event: CalendarEvent, newCount: number) {
+    event.attendanceCount = newCount;
+    // apelare pe viitor la backend
+    console.log(`prezenta modificata la ${event.title}: ${newCount}/14`);
+  }
+
+
 }
