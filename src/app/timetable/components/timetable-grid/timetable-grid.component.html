@@ -51,30 +51,43 @@
          [style.gridColumn]="event.dayIndex"
          [style.gridRow]="event.startRow + ' / span ' + event.span"
          [style.width.%]="event.width"
-         [style.marginLeft.%]="event.marginLeft">
+         [style.marginLeft.%]="event.marginLeft"
+         (click)="onEventClick(event)">
 
-<!--      <button class="event-notes-btn">-->
-<!--        ✎-->
-<!--      </button>-->
+      <!--      <button class="event-notes-btn">-->
+      <!--        ✎-->
+      <!--      </button>-->
 
-      <div class="event-title">
+      <div class="event-title"
+           (click)="openLink('https://www.google.com/search?q=UBB fisa disciplinei pdf +' + event.title + '&btnI=1')">
         {{ event.title }}
       </div>
 
       <div class="event-professor"
-           (click)="openRoomLocation('https://www.google.com/search?q=UBB+' + event.professor + '&btnI=1')">
+           (click)="openLink('https://www.google.com/search?q=UBB+' + event.professor + '&btnI=1')">
         {{ event.professor }}
       </div>
 
       <div class="event-room"
-           (click)="openRoomLocation('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj ' + event.room)">
+           (click)="openLink('https://maps.google.com/?q=Universitatea Babes Bolyai Cluj ' + event.room)">
         {{ event.room }}
       </div>
 
-      <div class="event-attendance-box">
-        <button class="att-btn minus">−</button>
-        <div class="att-count">5/14</div>
-        <button class="att-btn plus">+</button>
+      <div class="event-attendance-box"
+           [class.expanded]="event.isAttendanceOpen"
+           (click)="toggleAttendance(event, $event)">
+
+        <div class="att-icon-trigger" *ngIf="!event.isAttendanceOpen">
+          <span class="mini-count" *ngIf="!event.isAttendanceOpen">5</span> </div>
+
+        <div class="att-controls" *ngIf="event.isAttendanceOpen">
+          <button class="att-btn minus" (click)="handleAttendanceClick($event)">−</button>
+
+          <div class="att-count">5/14</div>
+
+          <button class="att-btn plus" (click)="handleAttendanceClick($event)">+</button>
+        </div>
+
       </div>
     </div>
 

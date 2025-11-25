@@ -5,6 +5,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
+
 .timetable-wrapper-2 {
   display: flex;
   gap: 15px;
@@ -18,7 +19,7 @@
 }
 
 .hour {
-  height: 50px;
+  height: 48px;
   background: #dbefff;
   color: #2a5a7f;
   border-radius: 8px;
@@ -26,6 +27,7 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  border: 1px solid #818181;
 }
 
 .grid-area {
@@ -210,6 +212,10 @@
   pointer-events: none;
 }
 
+.event-title {
+  cursor: pointer;
+}
+
 .event-room {
   cursor: pointer;
 }
@@ -231,85 +237,109 @@
 /* ——— CONTORIZARE PREZENȚE ——————————————————— */
 .event-attendance-box {
   position: absolute;
-  left: 3px;
-  bottom: 3px;
+  left: 6px; /* Putin mai mult spatiu */
+  bottom: 6px;
+
+  /* Dimensiuni variabile */
+  height: 28px;
+  min-width: 28px; /* Latimea minima cand e inchis */
+
+  /* Flexbox pentru centrare */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Stilul Glassmorphism */
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px; /* Mai rotund (pill shape) */
+  padding: 0; /* Padding controlat intern */
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 20;
+
+  /* Animația de deschidere */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+/* Cand e expandat (adăugat din Angular) */
+.event-attendance-box.expanded {
+  padding: 0 4px; /* Adaugam padding doar cand e deschis */
+  background: rgba(255, 255, 255, 0.45); /* Mai opac cand lucrezi cu el */
+  border-color: rgba(255,255,255,0.8);
+  min-width: 90px; /* Latimea necesara pentru controale */
+}
+
+/* Hover pe starea inchisa */
+.event-attendance-box:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* --- 1. STAREA ÎNCHISĂ (Iconița) --- */
+.att-icon-trigger {
+  font-size: 14px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.mini-count {
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: -2px; /* Ajustare vizuala fina */
+}
+
+/* --- 2. STAREA DESCHISĂ (Controalele) --- */
+.att-controls {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 10px;
-  padding: 3px 3px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  animation: fadeIn 0.3s ease forwards;
 }
 
+/* Butoanele + si - */
 .att-btn {
   width: 20px;
   height: 20px;
-  border-radius: 6px;
+  border-radius: 50%; /* Le facem rotunde complet */
   border: none;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.65);
   font-weight: 900;
-  font-size: 16px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: 0.15s ease;
-  color: #222;
-  text-shadow: none;
+  color: #2a5a7f; /* Culoare text mai vizibila */
+  padding: 0;
+  line-height: 1;
 }
 
 .att-btn:hover {
-  background: rgba(255,255,255,0.85);
-  transform: translateY(-1px);
+  background: #fff;
+  transform: scale(1.1);
 }
 
 .att-count {
   font-size: 13px;
   font-weight: 700;
   color: #fff;
-  text-shadow: 0px 1px 4px rgba(0,0,0,0.45);
+  white-space: nowrap; /* Sa nu rupa randul */
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+  min-width: 30px;
+  text-align: center;
 }
 
-/*.event-notes-btn {*/
-/*  position: absolute;*/
-/*  top: 6px;*/
-/*  right: 6px;*/
-/*  width: 24px;*/
-/*  height: 24px;*/
-
-/*  !* Stil vizual - Glassmorphism *!*/
-/*  background: rgba(255, 255, 255, 0.25);*/
-/*  backdrop-filter: blur(2px);*/
-/*  border: 1px solid rgba(255, 255, 255, 0.4);*/
-/*  border-radius: 6px;*/
-
-/*  !* Centrare iconita/text *!*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-
-/*  !* Font si culoare *!*/
-/*  color: white;*/
-/*  font-size: 14px;*/
-/*  font-weight: bold;*/
-/*  cursor: pointer;*/
-/*  z-index: 20; !* Să fie peste event *!*/
-/*  transition: all 0.2s ease;*/
-
-/*  !* Resetare stiluri default button *!*/
-/*  padding: 0;*/
-/*  outline: none;*/
-/*}*/
-
-/*.event-notes-btn:hover {*/
-/*  background: rgba(255, 255, 255, 0.55);*/
-/*  transform: scale(1.1);*/
-/*  box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
-/*}*/
-
-/*.event-notes-btn:active {*/
-/*  transform: scale(0.95);*/
-/*}*/
+/* Animatie simpla de aparitie */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}

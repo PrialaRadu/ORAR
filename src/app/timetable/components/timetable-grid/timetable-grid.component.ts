@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import {Component, Input, OnInit, inject, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
-interface CalendarEvent {
+export interface CalendarEvent {
   id: number;
   title: string;
   type: 'lab' | 'curs' | 'sem';
@@ -13,6 +13,9 @@ interface CalendarEvent {
   span: number;
   width?: number;
   marginLeft?: number;
+  isAttendanceOpen?: boolean;
+  notes?: string;
+  weeklyNotes: { [week: number]: string };
 }
 
 @Component({
@@ -26,6 +29,7 @@ export class TimetableGridComponent implements OnInit {
 
   @Input() currentDayIndex!: number;
   @Input() currentLinePosition!: number;
+  @Output() eventClicked = new EventEmitter<CalendarEvent>();
 
   // injectam httpclient
   private http = inject(HttpClient);
@@ -73,7 +77,8 @@ export class TimetableGridComponent implements OnInit {
           room: cols[4],
           dayIndex: parseInt(cols[5]),
           startRow: parseInt(cols[6]),
-          span: parseInt(cols[7])
+          span: parseInt(cols[7]),
+          weeklyNotes: {}
         };
         events.push(newEvent);
       }
@@ -111,7 +116,21 @@ export class TimetableGridComponent implements OnInit {
     this.displayEvents = events;
   }
 
-  openRoomLocation(url: string) {
+  openLink(url: string) {
     window.open(url, "_blank");
+  }
+
+  toggleAttendance(event: CalendarEvent, e: Event) {
+    e.stopPropagation(); // Previne click-ul sa se duca la parinte (daca ai click pe tot eventul)
+    event.isAttendanceOpen = !event.isAttendanceOpen;
+  }
+
+  handleAttendanceClick(e: Event) {
+    // Aceasta functie e doar pentru butoanele + si -
+    // Ca sa nu se inchida meniul cand apesi pe plus
+    e.stopPropagation();
+  }
+  onEventClick(event: CalendarEvent) {
+    this.eventClicked.emit(event);
   }
 }

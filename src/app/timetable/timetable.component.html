@@ -1,19 +1,54 @@
 <div class="page-container">
   <app-sidebar></app-sidebar>
 
-  <app-header
-    [groups]="groups"
-    [specializations]="specializations"
-    [selectedGroup]="selectedGroup"
-    [selectedSpecialization]="selectedSpecialization"
-    [selectedWeek]="selectedWeek"
-    (groupChange)="selectGroup($event)"
-    (specializationChange)="selectSpecialization($event)"
-    (weekChange)="selectWeek($event)"
-  ></app-header>
+  <div class="content-wrapper">
+    <app-header
+      [groups]="groups"
+      [specializations]="specializations"
+      [selectedGroup]="selectedGroup"
+      [selectedSpecialization]="selectedSpecialization"
+      [selectedWeek]="selectedWeek"
+      (groupChange)="selectGroup($event)"
+      (specializationChange)="selectSpecialization($event)"
+      (weekChange)="selectWeek($event)"
+    ></app-header>
 
-  <app-timetable-grid
-    [currentDayIndex]="currentDayIndex"
-    [currentLinePosition]="currentLinePosition"
-  ></app-timetable-grid>
+    <app-timetable-grid
+      [currentDayIndex]="currentDayIndex"
+      [currentLinePosition]="currentLinePosition"
+      (eventClicked)="onEventSelected($event)"
+    ></app-timetable-grid>
+  </div>
+
+  <div class="right-panel" *ngIf="selectedEvent" [ngClass]="selectedEvent.type">
+
+    <div class="panel-controls">
+
+      <div class="week-select-wrapper">
+        <span class="week-icon">📅</span>
+        <select class="week-select" [(ngModel)]="currentNoteWeek">
+          <option *ngFor="let w of weeksList" [value]="w">
+            Sapt {{ w }}
+          </option>
+        </select>
+      </div>
+
+      <button class="close-btn" (click)="closeNotes()">×</button>
+    </div>
+
+    <h2 class="panel-title">{{ selectedEvent.title }}</h2>
+
+    <hr class="divider">
+
+    <label class="notes-label">
+      Notițe pentru Săptămâna {{ currentNoteWeek }}:
+    </label>
+
+    <textarea
+      class="notes-area"
+      [(ngModel)]="selectedEvent.weeklyNotes[currentNoteWeek]"
+      placeholder="Scrie notițele pentru saptamana {{currentNoteWeek}} aici..."></textarea>
+
+  </div>
+
 </div>
